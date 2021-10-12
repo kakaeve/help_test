@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국오릭스렌텍 렌탈료 계산기</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="irr_calc.css">
+
+</head>
+<body>
+    <header class="con-min-width title">
+        <h1 class="ratin">ORIX Rentec(KOREA)</h1>
+        <h1>분석기 렌탈료 계산기</h1>
+    </header>
+    <hr>
+    <form action="/">
+        <section>
+            <div class="text-box">장비금액<span class="star">*</span></div>
+            <input type="text" id="supply" name="supply" placeholder="숫자를 입력해주세요" onkeyup="inputNumberAutoComma(this);">
+        </section>
+        <section>
+            <div class="text-box">보증금비율<span class="star">*</span></div>
+            <select id="deposit" class="block">
+                <option value="0" selected>0%</option>
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+            </select>
+        </section>
+        <section>
+            <div class="text-box">렌탈기간<span class="star">*</span></div>
+            <select id="period" class="block">
+                <option value="12" selected>12개월</option>
+                <option value="13">13개월</option>
+                <option value="14">14개월</option>
+                <option value="15">15개월</option>
+                <option value="16">16개월</option>
+                <option value="17">17개월</option>
+                <option value="18">18개월</option>
+                <option value="19">19개월</option>
+                <option value="20">20개월</option>
+                <option value="21">21개월</option>
+                <option value="22">22개월</option>
+                <option value="23">23개월</option>
+                <option value="24">24개월</option>
+                <option value="25">25개월</option>
+                <option value="26">26개월</option>
+                <option value="27">27개월</option>
+                <option value="28">28개월</option>
+                <option value="29">29개월</option>
+                <option value="30">30개월</option>
+                <option value="31">31개월</option>
+                <option value="32">32개월</option>
+                <option value="33">33개월</option>
+                <option value="34">34개월</option>
+                <option value="35">35개월</option>
+                <option value="36">36개월</option>
+                <option value="37">37개월</option>
+                <option value="38">38개월</option>
+                <option value="39">39개월</option>
+                <option value="40">40개월</option>
+                <option value="41">41개월</option>
+                <option value="42">42개월</option>
+                <option value="43">43개월</option>
+                <option value="44">44개월</option>
+                <option value="45">45개월</option>
+                <option value="46">46개월</option>
+                <option value="47">47개월</option>
+                <option value="48">48개월</option>
+                <option value="49">49개월</option>
+                <option value="50">50개월</option>
+                <option value="51">51개월</option>
+                <option value="52">52개월</option>
+                <option value="53">53개월</option>
+                <option value="54">54개월</option>
+                <option value="55">55개월</option>
+                <option value="56">56개월</option>
+                <option value="57">57개월</option>
+                <option value="58">58개월</option>
+                <option value="59">59개월</option>
+                <option value="60">60개월</option>
+            </select>
+        </section>
+        <section>
+            <div class="text-box">연요율(금리%)<span class="star">*</span></div>
+            <input type="text" id="percent" name="percent" class="block" placeholder="요율(%)을 입력해주세요." oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
+            
+        </section>
+        <hr>
+        <div class="result_text">월 예상 렌탈금액 : <span class="result">₩</span><span id="calc_value"></span class><span class="result">(부가세별도)</span></div>
+        <p class="explain">각 고객사의 신용도에 따라 렌탈 예상금액은 실제 산출금액과 상이 할 수 있습니다.</p>
+        <p class="explain">렌탈계약 종료 후 렌탈장비 소유권이전 희망 시 매매금액은 계약보증금으로 상계처리 가능합니다.</p>
+        <p class="explain">한국오릭스렌텍에서 자산매입 후 임대하는 상품으로 귀사의 부채로 계상되지 않아 신용도에 영향이 없고 재무구조 개선에 도움이 될 수 있습니다.</p>
+        <div class="btn-block">
+            <button type="button" id="calc_button">계산하기</button>
+            <button id="refresh_button">초기화</button>
+        </div>
+    </form>
+    <script type="text/javascript" src="comma.js"></script>
+    <script type="text/javascript" src="irr_calc.js"></script>
+</body>
+</html>
