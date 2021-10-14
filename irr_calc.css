@@ -1,25 +1,18 @@
 /*폰트 적용 시작*/
 /* roboto-regular - latin */
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    src: local(''),
-    url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-  }
-
 /*폰트 적용 끝*/
 
 /*노말라이즈 시작*/
-    body, ul, li{
-        margin:0;
-        padding:0;
-        list-style:none;
-    }
+body, ul, li{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
 
-    a{
-        color:inherit;
-        text-decoration: none;
-    }
+a{
+    color:inherit;
+    text-decoration: none;
+}
 /*노말라이즈 끝*/
 
 /*라이브러리 시작*/
@@ -50,7 +43,7 @@
 
 /*커스텀 시작*/
 :root{
-    --site-width:1200px;
+    --site-width:500px;
     --site-height:100%;
 }
 
@@ -68,17 +61,18 @@
 }
 
 body{
-    font-family: 'Roboto', 바탕체, 'sans-serif';
+    font-family: 'Roboto', serif;
     color:#003979;
     font-size:16px;
 }
 
 form{
-    width:100%;
+    width:calc(100% - 40px);
     padding:20px;
     background-color: #fff;
     box-shadow: 0 2px 5px #ccc;
-    border:10px solid red;
+    /*border:10px solid red;
+    box-sizing: border-box;*/
 }
 header{
     padding: 20px;
@@ -93,11 +87,25 @@ h1{
     text-align: center;
     line-height:22px;
 }
-
+.head-text{
+    font-size:2em;
+    margin-top:15px;
+    margin-bottom: 4px;
+    font-size:28px;
+}
+hr{
+    margin-top:7px;
+}
 /*헤더 끝*/
+
 /*텍스트 박스 시작*/
 .text-box{
+    font-weight: 400;
     display: inline-block;
+    margin-top:20px;
+    margin-bottom: 4px;
+    font-size:14px;
+    height: 22px;
 }
 .star{
     display: inline-block;
@@ -113,6 +121,14 @@ input{
     border:1px solid #ccc;
     border-radius: 3px;
     vertical-align: middle;
+    font-size:14px;
+    height: 22px;
+}
+select{
+    padding: 7px 0;
+    border-radius: 3px;
+    border:1px solid #ccc;
+    background:transparent;
 }
 input, select{
 
@@ -123,27 +139,27 @@ input:hover, select:hover{
     background-color: #e6eef7;
 }
 
-.logo{
-    display: block;
-    margin:0px auto;
-}
 
 @media (min-width: 568px){
-    .option-box{
+    .content-box{
         display: flex;
-        justify-content: space-between;
+        justify-content:space-between;
     }
-    .text-box > *{
+    .content-box > *{
         width:30%;
         margin-bottom: 0;
     }
 
 }
-.result_text{
+.result_text, .irr_box{
+    width:50%;
+    text-align: right;
     color:#003979;
     font-size:16px;
     font-weight: bold;
-    text-align: center;
+    margin-top:15px;
+    margin-bottom:4px;
+    display: inline-block;
 }
 #calc_value{
     color:#EB1551;
@@ -159,14 +175,60 @@ input:hover, select:hover{
     font-size: 11px;
     line-height: 18px;
 }
+
+
 /*텍스트 박스 끝*/
 
 /*버튼 시작*/
+.left-toggle{
+
+    margin-right:-6px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.right-toggle{
+
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.toggle-button{
+    font-size:18px;
+    border-style: none;
+}
+.toggle-button.active{
+    background-color: #808080;
+    color:white;
+}
+
+.btn-block{
+    text-align: center;
+}
+.result-button{
+    width:150px;
+    padding : 10px;
+    border : none;
+    -webkit-border-radius : 5px;
+    -moz-border-radius : 5px;
+    border-radius: 5px;
+    background-color: #003979;
+    font-size:16px;
+    color:#fff;
+    cursor: pointer;
+}
 #refresh_button{
     background-color: whitesmoke;
     color:black;
 }
+
 /*버튼 끝*/
+
+/*이미지 시작*/
+.logo{
+    display: block;
+    margin:0px auto;
+}
+
+/*이미지 끝*/
 
 /*커스텀 끝*/
 

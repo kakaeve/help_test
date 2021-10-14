@@ -1,0 +1,143 @@
+/*폰트 적용 시작*/
+/* roboto-regular - latin */
+/*폰트 적용 끝*/
+
+/*노말라이즈 시작*/
+body, ul, li{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+a{
+    color:inherit;
+    text-decoration: none;
+}
+/*노말라이즈 끝*/
+
+/*라이브러리 시작*/
+.con{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.inline-grid{
+    font-size:0;
+}
+
+.inline-grid > *{
+    font-size:1rem;
+    display:inline-block;
+    vertical-align:top;
+    box-sizing: border-box;
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+.block{
+    display: block;
+}
+/*라이브러리 끝*/
+
+/*커스텀 시작*/
+:root{
+    --site-width:500px;
+    --site-height:100%;
+}
+
+.con{
+    width:var(--site-width);
+}
+
+.con-min-width{
+    min-width:var(--site-width);
+    padding:0 10px;
+}
+
+.con-min-height{
+    min-height:var(--site-height);
+}
+
+body{
+    font-family: 'Roboto', serif;
+    color:black;
+    font-size:16px;
+}
+
+/*헤더 시작*/
+body{
+    min-height: 100%;
+}
+
+/*헤더 끝*/
+
+/*main-div 시작*/
+.main-div{
+    padding: 10px;
+}
+/*main-div 끝*/
+
+/*스몰 테이블 시작*/
+.small-table{
+
+    border:1px solid black;
+    border-collapse: collapse;
+    text-align: right;
+}
+.small-table th, .small-table td{
+    border: 1px solid black;
+    padding: 0 10px;
+}
+
+.small-table > * > tr > td:nth-of-type(2n+1){
+    background-color: #7cffff;
+    font-weight: bold;
+}
+/*스몰 테이블 끝*/
+
+/*엑셀 테이블 시작*/
+.excel-table{
+    border:1px solid black;
+    border-collapse: collapse;
+    margin:0 10px;
+    text-align: center;
+
+}
+
+.excel-table th, .excel-table td{
+    border: 1px solid black;
+}
+
+.excel-table > thead > tr{
+    background-color: #00aeff;
+}
+
+
+.excel-table > tbody > tr:nth-of-type(2n){
+    background-color: #e7ffff;
+}
+
+.excel-table .number-content{
+    text-align: right;
+}
+/*엑셀 테이블 끝*/
+
+/*텍스트 박스 시작*/
+
+/*텍스트 박스 끝*/
+
+/*버튼 시작*/
+
+
+/*버튼 끝*/
+
+/*이미지 시작*/
+
+/*이미지 끝*/
+
+/*커스텀 끝*/
+
+
+

@@ -1,105 +1,180 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>한국오릭스렌텍 렌탈료 계산기</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="irr_calc.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <!-- <script>   
+        function s2ab(s){
+            let buf = new ArrayBuffer(s.length);
+            let view = new Uint8Array(buf);
+            for(let i=0;i<s.length;i++){
+                view[i] = s.charCodeAt(i) & 0xFF;
+            }
+            return buf;
+        }
+        function exportExcel(){
+            let wb = XLSX.utils.book_new();
 
+            let newWorksheet = excelHandler.getWorksheet();
+
+            XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+            let wbout = XLSX.write(wb, {bookType:'xlsx', type:'binary'});
+
+            savsAs(new Blob([s2ab(wout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName());
+
+        }
+        document.readyState(function(){
+                document.getElementById("excelFileExport").click(()=>{
+                    exportExcel();
+                });
+            });
+    </script> -->
+    <script>
+        function excelExport(event){
+            let input = event.target;
+            let reader = new FileReader();
+            reader.onload = ()=>{
+                let fileData = reader.result;
+                let wb = XLSX.read(fileData, {type: 'binary'});
+                wb.SheetNames.forEach((sheetName){
+                    let rowObj = XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
+                    console.log(JSON.stringify(rowObj));
+                })
+            };
+            reader.readAsBinaryString(input.files[0]);
+        }
+    </script>
 </head>
+
 <body>
-    <header class="con-min-width title">
-        <h1 class="ratin">ORIX Rentec(KOREA)</h1>
-        <h1>분석기 렌탈료 계산기</h1>
-    </header>
-    <hr>
     <form action="/">
+        <header class="con-min-width title">
+            <h1 class="ratin head-text">ORIX Rentec(KOREA)</h1>
+            <h1 class="head-text">분석기 렌탈료 계산기</h1>
+        </header>
+        <hr>
         <section>
             <div class="text-box">장비금액<span class="star">*</span></div>
             <input type="text" id="supply" name="supply" placeholder="숫자를 입력해주세요" onkeyup="inputNumberAutoComma(this);">
         </section>
         <section>
             <div class="text-box">보증금비율<span class="star">*</span></div>
-            <select id="deposit" class="block">
-                <option value="0" selected>0%</option>
-                <option value="10">10%</option>
-                <option value="20">20%</option>
-                <option value="30">30%</option>
-            </select>
+            <div class="content-box">
+                <select id="deposit">
+                    <option value="0" selected>0%</option>
+                    <option value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="30">30%</option>
+                </select>
+            </div>
         </section>
         <section>
             <div class="text-box">렌탈기간<span class="star">*</span></div>
-            <select id="period" class="block">
-                <option value="12" selected>12개월</option>
-                <option value="13">13개월</option>
-                <option value="14">14개월</option>
-                <option value="15">15개월</option>
-                <option value="16">16개월</option>
-                <option value="17">17개월</option>
-                <option value="18">18개월</option>
-                <option value="19">19개월</option>
-                <option value="20">20개월</option>
-                <option value="21">21개월</option>
-                <option value="22">22개월</option>
-                <option value="23">23개월</option>
-                <option value="24">24개월</option>
-                <option value="25">25개월</option>
-                <option value="26">26개월</option>
-                <option value="27">27개월</option>
-                <option value="28">28개월</option>
-                <option value="29">29개월</option>
-                <option value="30">30개월</option>
-                <option value="31">31개월</option>
-                <option value="32">32개월</option>
-                <option value="33">33개월</option>
-                <option value="34">34개월</option>
-                <option value="35">35개월</option>
-                <option value="36">36개월</option>
-                <option value="37">37개월</option>
-                <option value="38">38개월</option>
-                <option value="39">39개월</option>
-                <option value="40">40개월</option>
-                <option value="41">41개월</option>
-                <option value="42">42개월</option>
-                <option value="43">43개월</option>
-                <option value="44">44개월</option>
-                <option value="45">45개월</option>
-                <option value="46">46개월</option>
-                <option value="47">47개월</option>
-                <option value="48">48개월</option>
-                <option value="49">49개월</option>
-                <option value="50">50개월</option>
-                <option value="51">51개월</option>
-                <option value="52">52개월</option>
-                <option value="53">53개월</option>
-                <option value="54">54개월</option>
-                <option value="55">55개월</option>
-                <option value="56">56개월</option>
-                <option value="57">57개월</option>
-                <option value="58">58개월</option>
-                <option value="59">59개월</option>
-                <option value="60">60개월</option>
-            </select>
+            <div class="content-box">
+                <select id="period" class="block">
+                    <option value="12" selected>12개월</option>
+                    <option value="13">13개월</option>
+                    <option value="14">14개월</option>
+                    <option value="15">15개월</option>
+                    <option value="16">16개월</option>
+                    <option value="17">17개월</option>
+                    <option value="18">18개월</option>
+                    <option value="19">19개월</option>
+                    <option value="20">20개월</option>
+                    <option value="21">21개월</option>
+                    <option value="22">22개월</option>
+                    <option value="23">23개월</option>
+                    <option value="24">24개월</option>
+                    <option value="25">25개월</option>
+                    <option value="26">26개월</option>
+                    <option value="27">27개월</option>
+                    <option value="28">28개월</option>
+                    <option value="29">29개월</option>
+                    <option value="30">30개월</option>
+                    <option value="31">31개월</option>
+                    <option value="32">32개월</option>
+                    <option value="33">33개월</option>
+                    <option value="34">34개월</option>
+                    <option value="35">35개월</option>
+                    <option value="36">36개월</option>
+                    <option value="37">37개월</option>
+                    <option value="38">38개월</option>
+                    <option value="39">39개월</option>
+                    <option value="40">40개월</option>
+                    <option value="41">41개월</option>
+                    <option value="42">42개월</option>
+                    <option value="43">43개월</option>
+                    <option value="44">44개월</option>
+                    <option value="45">45개월</option>
+                    <option value="46">46개월</option>
+                    <option value="47">47개월</option>
+                    <option value="48">48개월</option>
+                    <option value="49">49개월</option>
+                    <option value="50">50개월</option>
+                    <option value="51">51개월</option>
+                    <option value="52">52개월</option>
+                    <option value="53">53개월</option>
+                    <option value="54">54개월</option>
+                    <option value="55">55개월</option>
+                    <option value="56">56개월</option>
+                    <option value="57">57개월</option>
+                    <option value="58">58개월</option>
+                    <option value="59">59개월</option>
+                    <option value="60">60개월</option>
+                </select>
+            </div>
+
         </section>
         <section>
             <div class="text-box">연요율(금리%)<span class="star">*</span></div>
-            <input type="text" id="percent" name="percent" class="block" placeholder="요율(%)을 입력해주세요." oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"/>
-            
+            <input type="text" id="percent" name="percent" class="block" placeholder="요율(%)을 입력해주세요."
+                oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
+        </section>
+        <section>
+            <div class="text-box">결제조건<span class="star">*</span></div>
+            <button type="button" id="left-toggle" class="toggle-button left-toggle active">선불</button>
+            <button type="button" id="right-toggle" class="toggle-button right-toggle">후불</button>
         </section>
         <hr>
-        <div class="result_text">월 예상 렌탈금액 : <span class="result">₩</span><span id="calc_value"></span class><span class="result">(부가세별도)</span></div>
-        <p class="explain">각 고객사의 신용도에 따라 렌탈 예상금액은 실제 산출금액과 상이 할 수 있습니다.</p>
-        <p class="explain">렌탈계약 종료 후 렌탈장비 소유권이전 희망 시 매매금액은 계약보증금으로 상계처리 가능합니다.</p>
-        <p class="explain">한국오릭스렌텍에서 자산매입 후 임대하는 상품으로 귀사의 부채로 계상되지 않아 신용도에 영향이 없고 재무구조 개선에 도움이 될 수 있습니다.</p>
-        <div class="btn-block">
-            <button type="button" id="calc_button">계산하기</button>
-            <button id="refresh_button">초기화</button>
-        </div>
+        <section>
+            <div class="result-box">
+                <div class="result_text">월 예상 렌탈금액 : </div><span class="result">&nbsp;₩</span><span
+                    id="calc_value"></span class><span class="result">(부가세별도)</span>
+            </div>
+            <div class="irr_box">
+                <div class="irr_text">예상 IRR :</div><span class="irr_result"></span>
+            </div>
+            <p class="explain">각 고객사의 신용도에 따라 렌탈 예상금액은 실제 산출금액과 상이 할 수 있습니다.</p>
+            <p class="explain">렌탈계약 종료 후 렌탈장비 소유권이전 희망 시 매매금액은 계약보증금으로 상계처리 가능합니다.</p>
+            <p class="explain">한국오릭스렌텍에서 자산매입 후 임대하는 상품으로 귀사의 부채로 계상되지 않아 신용도에 영향이 없고 재무구조 개선에 도움이 될 수 있습니다.</p>
+        </section>
+        <section>
+            <div class="btn-block">
+                <button type="button" id="calc_button" class="result-button">계산하기</button>
+                <button type="button" id="refresh_button" class="result-button">초기화</button>
+                <button type="button" id="rental_schedule" class="result-button">렌탈스케줄표보기</button>
+            </div>
+            <input type="file" id="excelFile" onchange="excelExport(event)"/>
+        </section>
+
+        <img class="logo"
+            src="data:image/png;base64,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"
+            alt="html size" width="400" height="200">
     </form>
+
     <script type="text/javascript" src="comma.js"></script>
     <script type="text/javascript" src="irr_calc.js"></script>
+    
 </body>
+
 </html>
