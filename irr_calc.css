@@ -151,7 +151,7 @@ input:hover, select:hover{
     }
 
 }
-.result_text, .irr_box{
+.result_text, .irr_text{
     width:50%;
     text-align: right;
     color:#003979;
@@ -164,6 +164,9 @@ input:hover, select:hover{
 #calc_value{
     color:#EB1551;
 
+}
+#irr_value{
+    color:#EB1551;
 }
 .result{
     color:#EB1551;
