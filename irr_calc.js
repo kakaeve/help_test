@@ -126,7 +126,7 @@ function irrCalc(total_in, total_out, income_per_month, period) {
         let count = 0;
         console.log("123");
 
-        for (result = 0; result < 100, count<100000; result = result + 0.000001, count++) {
+        for (result = 0; result < 100, count<1000000; result = result + 0.000001, count++) {
             //result = 0.010286999999998894;
             npv = 0.0;
             for (let i = 0; i < period + 1; i++) {
