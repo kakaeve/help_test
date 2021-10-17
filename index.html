@@ -12,48 +12,6 @@
     <link rel="stylesheet" href="irr_calc.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
-    <!-- <script>   
-        function s2ab(s){
-            let buf = new ArrayBuffer(s.length);
-            let view = new Uint8Array(buf);
-            for(let i=0;i<s.length;i++){
-                view[i] = s.charCodeAt(i) & 0xFF;
-            }
-            return buf;
-        }
-        function exportExcel(){
-            let wb = XLSX.utils.book_new();
-
-            let newWorksheet = excelHandler.getWorksheet();
-
-            XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
-
-            let wbout = XLSX.write(wb, {bookType:'xlsx', type:'binary'});
-
-            savsAs(new Blob([s2ab(wout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName());
-
-        }
-        document.readyState(function(){
-                document.getElementById("excelFileExport").click(()=>{
-                    exportExcel();
-                });
-            });
-    </script>
-    <script>
-        function excelExport(event){
-            let input = event.target;
-            let reader = new FileReader();
-            reader.onload = ()=>{
-                let fileData = reader.result;
-                let wb = XLSX.read(fileData, {type: 'binary'});
-                wb.SheetNames.forEach((sheetName){
-                    let rowObj = XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
-                    console.log(JSON.stringify(rowObj));
-                })
-            };
-            reader.readAsBinaryString(input.files[0]);
-        }
-    </script> -->
 </head>
 
 <body>

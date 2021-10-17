@@ -43,7 +43,7 @@ a{
 
 /*커스텀 시작*/
 :root{
-    --site-width:500px;
+    --site-width:100%;
     --site-height:100%;
 }
 
