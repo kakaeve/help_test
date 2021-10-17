@@ -50,7 +50,9 @@ calcButton.addEventListener('click', function () {
     span.textContent = calc_value;
 
     let irr_span = document.getElementById("irr_value");
-    irr_span.textContent = irrCalc(irr_total_in + RV, ins_total, irr_flows, calc_period) + "%";
+    irr_span.textContent = irrCalc(irr_total_in + RV, ins_total, irr_flows, calc_period, (result)=>{
+        irr_span.textContent = result;
+    }) + "%";
 
 
 
@@ -106,7 +108,7 @@ document.getElementById("right-toggle").addEventListener('click', () => {
 //     document.getElementsByClassName("left-toggle").className += 'active';
 // });
 
-function irrCalc(total_in, total_out, income_per_month, period) {
+function irrCalc(total_in, total_out, income_per_month, period, callback) {
     let result;
     let npv = 0;
     total_in = total_in * 1.0;
@@ -158,5 +160,6 @@ function irrCalc(total_in, total_out, income_per_month, period) {
     //document.getElementsByClassName("irr_target").innerHTML = Math.round(result*100, 4) + "%%";
     result = (result * 100).toFixed(4) * 12;
     result = Math.round(result * 100) / 100;
+    callback(result);
     return result;
 }
