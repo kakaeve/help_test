@@ -22,6 +22,8 @@ calcButton.addEventListener('click', function () {
     let irr_total_in = 0;
     let calc_period = period - (payment_time?1:0);
 
+    let insurance_free_percent = 0.6;
+
     let irr_flows = new Array(calc_period+1);
     console.log(calc_period);
     for(let i = 0;i<calc_period;i++){
@@ -50,9 +52,7 @@ calcButton.addEventListener('click', function () {
     span.textContent = calc_value;
 
     let irr_span = document.getElementById("irr_value");
-    irr_span.textContent = irrCalc(irr_total_in + RV, ins_total, irr_flows, calc_period, (result)=>{
-        irr_span.textContent = result;
-    }) + "%";
+    irr_span.textContent = irrCalc(irr_total_in + RV, ins_total, irr_flows, calc_period) + "%";
 
 
 
@@ -108,7 +108,7 @@ document.getElementById("right-toggle").addEventListener('click', () => {
 //     document.getElementsByClassName("left-toggle").className += 'active';
 // });
 
-function irrCalc(total_in, total_out, income_per_month, period, callback) {
+function irrCalc(total_in, total_out, income_per_month, period) {
     let result;
     let npv = 0;
     total_in = total_in * 1.0;
@@ -160,6 +160,5 @@ function irrCalc(total_in, total_out, income_per_month, period, callback) {
     //document.getElementsByClassName("irr_target").innerHTML = Math.round(result*100, 4) + "%%";
     result = (result * 100).toFixed(4) * 12;
     result = Math.round(result * 100) / 100;
-    callback(result);
     return result;
 }
