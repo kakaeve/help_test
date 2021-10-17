@@ -50,7 +50,7 @@ calcButton.addEventListener('click', function () {
     span.textContent = calc_value;
 
     let irr_span = document.getElementById("irr_value");
-    irr_span.textContent = irrCalc(irr_total_in + RV, ins_total, irr_flows, calc_period+1) + "%";
+    irr_span.textContent = irrCalc(irr_total_in + RV, ins_total, irr_flows, calc_period) + "%";
 
 
 
@@ -126,7 +126,7 @@ function irrCalc(total_in, total_out, income_per_month, period) {
         let count = 0;
         console.log("123");
 
-        for (result = 0; result < 100, count<1000000; result = result + 0.000001, count++) {
+        for (result = 0; result < 100, count<100000; result = result + 0.000001, count++) {
             //result = 0.010286999999998894;
             npv = 0.0;
             for (let i = 0; i < period + 1; i++) {
@@ -139,10 +139,10 @@ function irrCalc(total_in, total_out, income_per_month, period) {
 
                 npv = npv + income_per_month[i] / Math.pow(1 + result, i + 1);
 
-                //console.log("npv : " + npv);
+                console.log("npv : " + npv);
             }
-            //console.log("npv : " + npv);
-            //console.log("result : " + result);
+            console.log("npv : " + npv);
+            console.log("result : " + result);
             if (npv <= total_out) {
                 console.log(count);
                 console.log("out");

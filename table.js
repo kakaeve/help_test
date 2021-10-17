@@ -394,9 +394,6 @@ document.getElementById("main-div").appendChild(excel_table);
 function irrCalc(total_in, total_out, income_per_month, period){
     let result;
     let npv = 0;
-
-    console.log(period);
-    console.log(income_per_month.length);
     total_in = total_in*1.0;
     total_out = total_out*1.0;
 
